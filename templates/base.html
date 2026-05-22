@@ -190,15 +190,13 @@
         <p class="px-3 py-2 text-xs font-semibold text-primary-400/70 uppercase tracking-widest">
           {% trans "Kategoriyalar" %}
         </p>
-        {% with cats="protokol,reje,qarar,buyruq,hisobot,dastur,boshqa" %}
-        {% for cat in cats.split:"," %}
-        <a href="/?category={{ cat }}"
-           class="nav-link flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-primary-300">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary-400/60 flex-shrink-0"></span>
-          {{ cat|capfirst }}
-        </a>
-        {% endfor %}
-        {% endwith %}
+        <a href="/?category=protokol" class="nav-link flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-primary-300"><span class="w-1.5 h-1.5 rounded-full bg-primary-400/60 flex-shrink-0"></span>Protokol</a>
+        <a href="/?category=reje" class="nav-link flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-primary-300"><span class="w-1.5 h-1.5 rounded-full bg-primary-400/60 flex-shrink-0"></span>Reje</a>
+        <a href="/?category=qarar" class="nav-link flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-primary-300"><span class="w-1.5 h-1.5 rounded-full bg-primary-400/60 flex-shrink-0"></span>Qarar</a>
+        <a href="/?category=buyruq" class="nav-link flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-primary-300"><span class="w-1.5 h-1.5 rounded-full bg-primary-400/60 flex-shrink-0"></span>Buyruq</a>
+        <a href="/?category=hisobot" class="nav-link flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-primary-300"><span class="w-1.5 h-1.5 rounded-full bg-primary-400/60 flex-shrink-0"></span>Hisobot</a>
+        <a href="/?category=dastur" class="nav-link flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-primary-300"><span class="w-1.5 h-1.5 rounded-full bg-primary-400/60 flex-shrink-0"></span>Dastur</a>
+        <a href="/?category=boshqa" class="nav-link flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-primary-300"><span class="w-1.5 h-1.5 rounded-full bg-primary-400/60 flex-shrink-0"></span>Boshqa</a>
       </div>
     </nav>
 

@@ -169,7 +169,7 @@
               </svg>
             </a>
             <form method="post" action="{% url 'delete_document' doc.pk %}"
-                  onsubmit="return confirm('{% trans "Hujjatni o\'chirishni tasdiqlaysizmi?" %}')"
+                  onsubmit="return confirm('Hujjatni ochirishni tasdiqlaysizmi?')"
                   class="inline">
               {% csrf_token %}
               <button type="submit"
