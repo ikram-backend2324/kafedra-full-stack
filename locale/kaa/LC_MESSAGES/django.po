@@ -1,0 +1,182 @@
+# Karakalpak (kaa) translations for Kafedra Document Management System
+# Latin script. Fill in msgstr values for Karakalpak UI text.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: kaa\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Kafedra Hujjat Boshqaruvi"
+msgstr "Kafedra Hújjet Basqarıwı"
+
+msgid "Hujjat tizimi"
+msgstr "Hújjet sisteması"
+
+msgid "Menyu"
+msgstr "Menyu"
+
+msgid "Bosh sahifa"
+msgstr "Bas bet"
+
+msgid "Hujjat yuklash"
+msgstr "Hújjet júklew"
+
+msgid "Kategoriyalar"
+msgstr "Kategoriyalar"
+
+msgid "Chiqish"
+msgstr "Shıǵıw"
+
+msgid "Boshqaruv Paneli"
+msgstr "Basqarıw Paneli"
+
+msgid "Barcha hujjatlar"
+msgstr "Barлıq hújjetler"
+
+msgid "ta hujjat"
+msgstr "hújjet"
+
+msgid "ta tahlil qilingan"
+msgstr "tahlil etilgen"
+
+msgid "Jami hujjatlar"
+msgstr "Jámi hújjetler"
+
+msgid "AI tahlil qilingan"
+msgstr "AI tahlil etilgen"
+
+msgid "Gemini AI bilan tahlil"
+msgstr "Gemini AI menen tahlil"
+
+msgid "Kategoriyalar"
+msgstr "Kategoriyalar"
+
+msgid "Faol kategoriyalar"
+msgstr "Faol kategoriyalar"
+
+msgid "Tezkor yuklash"
+msgstr "Tez júklew"
+
+msgid "Yangi hujjat"
+msgstr "Jańa hújjet"
+
+msgid "PDF, DOCX, XLSX..."
+msgstr "PDF, DOCX, XLSX..."
+
+msgid "Barcha kategoriyalar"
+msgstr "Barлıq kategoriyalar"
+
+msgid "Hujjat qidirish…"
+msgstr "Hújjet izdew…"
+
+msgid "Qidirish"
+msgstr "İzdew"
+
+msgid "Tozalash"
+msgstr "Tazalaw"
+
+msgid "Sarlavha"
+msgstr "Atama"
+
+msgid "Kategoriya"
+msgstr "Kategoriya"
+
+msgid "Muallif"
+msgstr "Avtor"
+
+msgid "Sana"
+msgstr "Sana"
+
+msgid "Amallar"
+msgstr "Ámeliyatlar"
+
+msgid "Tahlil"
+msgstr "Tahlil"
+
+msgid "Ko'rish"
+msgstr "Kóriw"
+
+msgid "O'chirish"
+msgstr "Óshiriw"
+
+msgid "Ko'rsatilmoqda"
+msgstr "Kórsatilmekte"
+
+msgid "Oldingi"
+msgstr "Aldıńǵı"
+
+msgid "Keyingi"
+msgstr "Keyingi"
+
+msgid "Hujjatlar topilmadi"
+msgstr "Hújjetler tabılmadı"
+
+msgid "Qidiruv natijalari bo'sh yoki hali hujjat yuklanmagan."
+msgstr "İzdew nátiyjesi bos yamasa hújjet júklenbeǵen."
+
+msgid "Birinchi hujjatni yuklash"
+msgstr "Birinshi hújjetti júklew"
+
+msgid "Yangi hujjat yuklash"
+msgstr "Jańa hújjet júklew"
+
+msgid "PDF, DOCX, XLSX va boshqa formatlarni yuklang"
+msgstr "PDF, DOCX, XLSX hám basqa formatlar"
+
+msgid "Ortga"
+msgstr "Artqa"
+
+msgid "Hujjat sarlavhasini kiriting…"
+msgstr "Hújjet atamasın kiriting…"
+
+msgid "Ixtiyoriy tavsif…"
+msgstr "Ixtıyariy tavsip…"
+
+msgid "Fayl tanlash uchun yuqoridagi maydonga bosing"
+msgstr "Fayl tańlaw ushın joqarıdaǵı maydanǵa basın"
+
+msgid "Hujjatni yuklash"
+msgstr "Hújjetti júklew"
+
+msgid "Yuklab olish"
+msgstr "Júklep alıw"
+
+msgid "Tizimga kirish"
+msgstr "Sistemaga kiriw"
+
+msgid "Login yoki parol noto'g'ri."
+msgstr "Login yaki parol nadurıs."
+
+msgid "Foydalanuvchi nomi"
+msgstr "Paydalanıwshı atı"
+
+msgid "Parol"
+msgstr "Parol"
+
+msgid "Kirish"
+msgstr "Kiriw"
+
+msgid "Gemini AI Tahlili"
+msgstr "Gemini AI Tahlili"
+
+msgid "Qayta tahlil"
+msgstr "Qayta tahlil"
+
+msgid "Tahlil qilish"
+msgstr "Tahlil etiw"
+
+msgid "Tahlil qilinmoqda…"
+msgstr "Tahlil etilmekte…"
+
+msgid "Hali tahlil qilinmagan."
+msgstr "Hálide tahlil etilmeǵen."
+
+msgid "\"Tahlil qilish\" tugmasini bosing"
+msgstr "\"Tahlil etiw\" túymesine basın"
+
+msgid "Tahlil qilingan"
+msgstr "Tahlil etilgen"
+
+msgid "Xato yuz berdi. Qaytadan urinib ko'ring."
+msgstr "Qátelik boldı. Qayta urınıp kóriń."

@@ -1,0 +1,9 @@
+# Uzbek translations for Kafedra Document Management System
+# This file provides base Uzbek (uz) strings.
+# Most UI strings are already written in Uzbek — add overrides here if needed.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uz\n"
+"Plural-Forms: nplurals=1; plural=0;\n"

@@ -1,0 +1,313 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:'uz' }}" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{% trans "Kafedra Hujjat Boshqaruvi" %}{% endblock %}</title>
+
+  <!-- Google Fonts: Playfair Display (headings) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Animate.css (for entrance animations) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans:    ['"DM Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              50:  '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            },
+            slate: {
+              850: '#1a2235',
+            }
+          },
+          animation: {
+            'fade-up':    'fadeUp 0.5s ease forwards',
+            'fade-in':    'fadeIn 0.4s ease forwards',
+            'slide-in-r': 'slideInRight 0.4s ease forwards',
+            'pulse-slow': 'pulse 3s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%':   { opacity: '0', transform: 'translateY(16px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              '0%':   { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideInRight: {
+              '0%':   { opacity: '0', transform: 'translateX(20px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+          },
+          boxShadow: {
+            card: '0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04)',
+            'card-hover': '0 4px 6px rgba(0,0,0,0.07), 0 10px 30px rgba(0,0,0,0.08)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Base typography */
+    body { font-family: 'DM Sans', system-ui, sans-serif; }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* Sidebar gradient background */
+    .sidebar-bg {
+      background: linear-gradient(180deg, #1e1b4b 0%, #312e81 40%, #1e1b4b 100%);
+    }
+
+    /* Page entrance animation  */
+    .page-content { animation: fadeUp 0.45s ease both; }
+
+    /* Nav link active state */
+    .nav-link-active {
+      background: rgba(99,102,241,0.25);
+      color: #e0e7ff;
+      border-left: 3px solid #818cf8;
+    }
+    .nav-link {
+      border-left: 3px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .nav-link:hover {
+      background: rgba(255,255,255,0.08);
+      border-left-color: rgba(165,180,252,0.5);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #c7d2fe; border-radius: 9999px; }
+
+    /* Category badge colours */
+    .badge-protokol { background:#dbeafe; color:#1d4ed8; }
+    .badge-reje     { background:#d1fae5; color:#065f46; }
+    .badge-qarar    { background:#fce7f3; color:#9d174d; }
+    .badge-buyruq   { background:#fee2e2; color:#991b1b; }
+    .badge-hisobot  { background:#fef9c3; color:#854d0e; }
+    .badge-dastur   { background:#ede9fe; color:#5b21b6; }
+    .badge-boshqa   { background:#f1f5f9; color:#475569; }
+
+    /* AI shimmer effect while loading */
+    @keyframes shimmer {
+      0%   { background-position: -400px 0; }
+      100% { background-position: 400px 0; }
+    }
+    .shimmer {
+      background: linear-gradient(90deg, #e0e7ff 25%, #c7d2fe 50%, #e0e7ff 75%);
+      background-size: 800px 100%;
+      animation: shimmer 1.6s infinite;
+      border-radius: 6px;
+    }
+
+    /* Toast notification */
+    .toast { animation: slideInRight 0.4s ease, fadeIn 0.4s ease; }
+  </style>
+
+  {% block extra_head %}{% endblock %}
+</head>
+
+<body class="h-full bg-slate-50 text-slate-800">
+
+<!-- ======================================================
+     APP SHELL — Sidebar + Main
+     ====================================================== -->
+<div class="flex h-screen overflow-hidden">
+
+  <!-- ─── SIDEBAR ──────────────────────────────────────── -->
+  <aside class="sidebar-bg w-64 flex-shrink-0 flex flex-col overflow-y-auto shadow-xl z-20">
+
+    <!-- Logo / brand -->
+    <div class="px-6 py-6 border-b border-white/10">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-primary-400/30 flex items-center justify-center flex-shrink-0">
+          <!-- Document stack icon -->
+          <svg class="w-5 h-5 text-primary-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-white font-display text-sm leading-tight font-semibold">Kafedra</p>
+          <p class="text-primary-300 text-xs leading-tight">{% trans "Hujjat tizimi" %}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex-1 px-3 py-4 space-y-1">
+      <p class="px-3 py-2 text-xs font-semibold text-primary-400/70 uppercase tracking-widest">
+        {% trans "Menyu" %}
+      </p>
+
+      <a href="{% url 'dashboard' %}"
+         class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}nav-link-active{% endif %}
+                flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-primary-200 font-medium">
+        <svg class="w-4 h-4 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+        {% trans "Bosh sahifa" %}
+      </a>
+
+      <a href="{% url 'upload' %}"
+         class="nav-link {% if request.resolver_match.url_name == 'upload' %}nav-link-active{% endif %}
+                flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-primary-200 font-medium">
+        <svg class="w-4 h-4 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+        </svg>
+        {% trans "Hujjat yuklash" %}
+      </a>
+
+      <!-- Category shortcuts -->
+      <div class="pt-3">
+        <p class="px-3 py-2 text-xs font-semibold text-primary-400/70 uppercase tracking-widest">
+          {% trans "Kategoriyalar" %}
+        </p>
+        {% with cats="protokol,reje,qarar,buyruq,hisobot,dastur,boshqa" %}
+        {% for cat in cats.split:"," %}
+        <a href="/?category={{ cat }}"
+           class="nav-link flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-primary-300">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary-400/60 flex-shrink-0"></span>
+          {{ cat|capfirst }}
+        </a>
+        {% endfor %}
+        {% endwith %}
+      </div>
+    </nav>
+
+    <!-- Bottom: user + lang switcher -->
+    <div class="px-4 py-4 border-t border-white/10 space-y-3">
+
+      <!-- Language switcher -->
+      <div class="flex items-center gap-2 bg-white/10 rounded-xl p-1">
+        {% get_current_language as CURRENT_LANGUAGE %}
+        {% get_available_languages as LANGUAGES %}
+        <form action="{% url 'set_language' %}" method="post" id="lang-form" class="flex w-full gap-1">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.path }}" />
+          <button type="submit" name="language" value="uz"
+            class="flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200
+              {% if CURRENT_LANGUAGE == 'uz' %}bg-white text-primary-700 shadow-sm{% else %}text-primary-300 hover:text-white{% endif %}">
+            UZ
+          </button>
+          <button type="submit" name="language" value="kaa"
+            class="flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200
+              {% if CURRENT_LANGUAGE == 'kaa' %}bg-white text-primary-700 shadow-sm{% else %}text-primary-300 hover:text-white{% endif %}">
+            QQ
+          </button>
+        </form>
+      </div>
+
+      <!-- User info -->
+      {% if user.is_authenticated %}
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-primary-500/40 flex items-center justify-center text-white text-sm font-semibold flex-shrink-0">
+          {{ user.username|first|upper }}
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-white text-xs font-medium truncate">{{ user.username }}</p>
+          <a href="{% url 'logout' %}" class="text-primary-400 text-xs hover:text-primary-200 transition">
+            {% trans "Chiqish" %} →
+          </a>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </aside>
+
+  <!-- ─── MAIN AREA ─────────────────────────────────────── -->
+  <div class="flex-1 flex flex-col overflow-hidden">
+
+    <!-- Top bar -->
+    <header class="bg-white border-b border-slate-100 px-8 py-4 flex items-center justify-between shadow-sm flex-shrink-0 z-10">
+      <div>
+        <h1 class="font-display text-lg font-semibold text-slate-800 leading-tight">
+          {% block page_title %}{% trans "Boshqaruv Paneli" %}{% endblock %}
+        </h1>
+        <p class="text-xs text-slate-400 mt-0.5">{% block page_subtitle %}Kafedra hujjat boshqaruv tizimi{% endblock %}</p>
+      </div>
+      <div class="flex items-center gap-3">
+        {% block header_actions %}
+        <a href="{% url 'upload' %}"
+           class="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+          </svg>
+          {% trans "Yangi hujjat" %}
+        </a>
+        {% endblock %}
+      </div>
+    </header>
+
+    <!-- Messages / toasts -->
+    {% if messages %}
+    <div class="fixed top-4 right-4 z-50 space-y-2" id="toast-container">
+      {% for message in messages %}
+      <div class="toast flex items-center gap-3 bg-white border border-slate-100 shadow-lg rounded-xl px-4 py-3 max-w-sm"
+           data-auto-dismiss="4000">
+        {% if message.tags == 'success' %}
+        <span class="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0"></span>
+        {% else %}
+        <span class="w-2 h-2 rounded-full bg-rose-500 flex-shrink-0"></span>
+        {% endif %}
+        <p class="text-sm text-slate-700">{{ message }}</p>
+        <button onclick="this.closest('[data-auto-dismiss]').remove()"
+                class="ml-auto text-slate-300 hover:text-slate-500 transition text-lg leading-none">&times;</button>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Page content -->
+    <main class="flex-1 overflow-y-auto p-8 page-content">
+      {% block content %}{% endblock %}
+    </main>
+
+  </div><!-- /main area -->
+</div><!-- /app shell -->
+
+<!-- ======================================================
+     GLOBAL JS
+     ====================================================== -->
+<script>
+  // Auto-dismiss toasts
+  document.querySelectorAll('[data-auto-dismiss]').forEach(el => {
+    const delay = parseInt(el.dataset.autoDismiss) || 3000;
+    setTimeout(() => {
+      el.style.transition = 'opacity 0.4s, transform 0.4s';
+      el.style.opacity = '0';
+      el.style.transform = 'translateX(20px)';
+      setTimeout(() => el.remove(), 400);
+    }, delay);
+  });
+</script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>
