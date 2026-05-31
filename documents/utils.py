@@ -31,7 +31,7 @@ _LANG_INSTRUCTIONS = {
 _DEFAULT_LANG_INSTRUCTION = _LANG_INSTRUCTIONS["uz"]
 
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
-GEMINI_MODEL = "google/gemini-2.0-flash"
+GEMINI_MODEL = "deepseek/deepseek-v4-flash"
 
 
 def _get_lang_instruction(language_code: str) -> str:
